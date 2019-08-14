@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load form_fields %}
+{% block content %}
+
+<div class="col-md-4 offset-md-4">
+        <form name = "form" method = "POST" >
+          {% csrf_token %}
+          <div class="md-form">
+              <input type="text" id="form1" name="toemail" class="form-control">
+              <label for="form1">To Mail</label>
+            </div>
+            <div class="md-form">
+                <input type="text" id="form2" name="subject" class="form-control">
+                <label for="form2">Subject</label>
+              </div>
+              <div class="md-form">
+                  <textarea id="form7" class="md-textarea form-control" name="body" rows="3"></textarea>
+                  <label for="form7">Body</label>
+                </div>
+          <div class="form-actions">
+      <input type="submit" value="send" class="btn btn-outline-default">
+      </div>
+        </form>
+        </div>
+
+        {% endblock %}

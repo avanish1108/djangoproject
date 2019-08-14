@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'basic:detail_create' %}" class="btn btn-outline-success" style="align-items: center;">+New</a>
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Mobile Number</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for personaldetail in object_list %}
+    <tr>
+      <td>{{personaldetail.firstname}}</td>
+      <td>{{personaldetail.lastname}}</td>
+      <td>{{personaldetail.mobileno}}</td>
+      <td><a href="{% url 'basic:detail_edit' personaldetail.id %}">edit</a> | <a href="{% url 'basic:detail_delete' personaldetail.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

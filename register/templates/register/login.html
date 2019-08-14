@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block content%}
+<div class="col-md-4 offset-md-4">
+    <form name = "form" method = "POST" >
+      {% csrf_token %}
+      <div class="md-form">
+          <input type="text" id="username" name="username" class="form-control">
+          <label for="username">User name</label>
+        </div>
+        <!-- <div class="md-form">
+            <input type="text" id="email" name="email" class="form-control">
+            <label for="email">Email Id</label>
+          </div> -->
+          <div class="md-form">
+            <input type="password" id="password" name="password" class="form-control">
+            <label for="password">Password</label>
+          </div>
+      <div class="form-actions">
+  <input type="submit" value="send" class="btn btn-outline-default">
+  </div>
+    </form>
+    </div>
+{%endblock%}

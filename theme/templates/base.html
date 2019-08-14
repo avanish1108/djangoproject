@@ -1,0 +1,145 @@
+<html>
+<head>
+  <title>survey form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<!--     
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js" integrity="sha256-4+LmFX3LhxXFzl67ZgoXoMlCKbsCupX8pnGC1gMYfp0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js" integrity="sha256-UEFikFBinV4tAScIYbW3+7BCI2zpM74VWtUa1MIR738=" crossorigin="anonymous"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+<script>
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+    })
+    </script>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'basic:detail_list' %}">personal detail</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'theme:mailsend' %}">sendmail</a>
+          </li>
+          {% if user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register:register' %}">Register</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register:user_login' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+      
+      <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            {% if user.is_authenticated%}
+            <a class="nav-link" href="">Hello {{user.username}}</a>
+            {% else %}
+            <a class="nav-link" href="">Register or Login if you'd like to</a>
+            {% endif %}
+            </li>
+              <!-- <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Send Mail</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+           
+                  <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                      <i class="fas fa-envelope prefix grey-text"></i>
+                      <textarea type="text" id="form81" class="md-textarea form-control form .form-control {color: #fff;}"  name="email" rows="4"></textarea>
+                      <label data-error="wrong" data-success="right" for="form29"> email</label>
+                    </div>
+            
+                    <div class="md-form mb-5">
+                      <i class="fas fa-tag prefix grey-text"></i>
+                      <input type="text" id="form32" class="form-control validate" name="subject" >
+                      <label data-error="wrong" data-success="right" for="form32">Subject</label>
+                    </div>
+            
+                    <div class="md-form">
+                      <i class="fas fa-pencil prefix grey-text"></i>
+                      <textarea type="text" id="form8" class="md-textarea form-control" rows="4" name="body"></textarea>
+                      <label data-error="wrong" data-success="right" for="form8">Body</label>
+                    </div>
+            
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <input type="submit"  class="btn btn-default" name="send">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>-->
+            <!-- <div class="text-center">
+              <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch
+                Modal Contact Form</a>
+            </div>  -->
+ 
+
+</div>
+          </li>
+        </ul>
+        
+    </div>
+  </nav>
+</div>
+
+  {% block content %}
+  {% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href=""> Emailsurvey.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+</body>
+
+</html>

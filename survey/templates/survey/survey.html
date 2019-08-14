@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load form_fields %}
+{% block content %}
+<div class="col-md-4 offset-md-4">
+<h1 style="text-align: center; color:chartreuse;"> send us your feedback !</h1><br />
+<hr/>
+<p id="description"> Complete your career interest survey to help you find the career best suited for you, based on your
+    personal
+    profile. This will help us evaluate your opportunities and give you an informative report. </p>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <!-- <div class="md-form">
+        <input type="text" id="form1" name="name" class="form-control" required>
+        <label for="form1">Name</label>
+    </div>
+    <div class="md-form">
+        <input type="email" id="form2" name="email" class="form-control" required>
+        <label for="form1">Email</label>
+    </div>
+    <div class="md-form">
+        <input type="number" id="form3" name="age" class="form-control" required>
+        <label for="form1">Age</label>
+    </div>
+    <p>Gender:</p>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="gender1" value="male" name="gender">
+        <label class="custom-control-label" for="gender1">Male</label>
+    </div>
+
+    
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="gender2" value="female" name="gender">
+        <label class="custom-control-label" for="gender2">Female</label>
+    </div>
+    <h5>What is your current career? Does it match your dream career?</h5>
+    <div class="md-form">
+        <textarea id="form7" class="md-textarea form-control" name="career" rows="3"></textarea>
+        <label for="form7">eg:I am a fighter pilot and yes I achieved my dream career...</label>
+    </div>
+    <h5>If you had the chance to change your current career field, would you do it?</h5>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="change1" value="yes" name="change">
+        <label class="custom-control-label" for="change1">Yes</label>
+    </div>
+
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="change2" value="No" name="change">
+        <label class="custom-control-label" for="change2">No</label>
+    </div>
+
+    <h5>Field you are interested in:</h5>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest1" value="Business" name="interest">
+        <label class="custom-control-label" for="interest1">Business</label>
+    </div>
+
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest2" value="Education" name="interest">
+        <label class="custom-control-label" for="interest2">Education</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest3" value="Marketing" name="interest">
+        <label class="custom-control-label" for="interest3">Marketing</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest4" value="Journalism" name="interest">
+        <label class="custom-control-label" for="interest4">Journalism</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest5" value="Psychology" name="interest">
+        <label class="custom-control-label" for="interest5">Psychology</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest6" value="Mathematics" name="interest">
+        <label class="custom-control-label" for="interest6">Mathematics</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="interest7" value="IT Programming" name="interest">
+        <label class="custom-control-label" for="interest7">IT Programming</label>
+    </div>
+
+
+
+    <h5>Personal Qualities:</h5>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities1" value="Creative" name="Qualities">
+        <label class="custom-control-label" for="Qualities1">Creative</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities2" value="Organized" name="Qualities">
+        <label class="custom-control-label" for="Qualities2">Organized</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities3" value="Methodical" name="Qualities">
+        <label class="custom-control-label" for="Qualities3">Methodical</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities4" value="Fast learner" name="Qualities">
+        <label class="custom-control-label" for="Qualities4">Fast learner</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities5" value="Competetive" name="Qualities">
+        <label class="custom-control-label" for="Qualities5">Competetive</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities6" value="Self-educated" name="Qualities">
+        <label class="custom-control-label" for="Qualities6">Self-educated</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities7" value="Self-motivated" name="Qualities">
+        <label class="custom-control-label" for="Qualities7">Self-motivated</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities8" value="Decision Maker" name="Qualities">
+        <label class="custom-control-label" for="Qualities8">Decision Maker</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Qualities9" value="Communicative" name="Qualities">
+        <label class="custom-control-label" for="Qualities9">Communicative</label>
+    </div>
+
+    <h5>Hobbies:</h5>
+
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies1" value="Fishing" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies1">Fishing</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies2" value="Cooking" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies2">Cooking</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies3" value="Painting" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies3">Painting</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies4" value="Gardening" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies4">Gardening</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies5" value="Networking" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies5">Networking</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies6" value="Programming" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies6">Programming</label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" class="custom-control-input" id="Hobbies7" value="Reading" name="Hobbies">
+        <label class="custom-control-label" for="Hobbies7">Reading</label>
+    </div>-->
+    <div class="form-actions"> 
+        <input type="submit" value="submit" class="btn btn-outline-default">
+    </div> 
+</form>
+
+<!-- {% form method="POST" %}
+<div class="md-form">
+    <input type="text" id="form1" name="name" class="form-control" required>
+    <label for="form1">Name</label>
+</div>
+{% endform %} -->
+</div>
+{% endblock %}

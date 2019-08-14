@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+</br>
+<h4 style="text-align: center; color:chartreuse;">Personal Detail</h4>
+</hr>
+<div class="col-md-4 offset-md-4">
+<form method="POST">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+        <div class="md-form">
+        <input type="text" id="form1" name="firstname" value="{{ personaldetail.firstname | default:"" }}" class="form-control">
+        <label for="form1">First Name</label>
+      </div>
+      <div class="md-form">
+          <input type="text" id="form2" name="lastname" value="{{ personaldetail.lastname | default:"" }}" class="form-control">
+          <label for="form2">Last Name</label>
+        </div>
+        <div class="md-form">
+            <input type="text" id="form3" name="mobileno" value="{{ personaldetail.mobileno | default:"" }}" class="form-control">
+            <label for="form2">Mobile No.</label>
+          </div>
+    <div class="form-actions">
+<input type="submit" value="send" class="btn btn-outline-default">
+</div>
+</form>
+</div>
+{% endblock %}
