@@ -3,15 +3,17 @@ from register.forms import UserForm,UserProfileInfoForm
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import get_object_or_404
+from .models import UserProfileInfo
 # Create your views here.
 # def register(request):
 def register(request):
     registered=False
     if request.method=='POST':
         user_form=UserForm(data=request.POST)
-        profile_form=UserProfileInfoForm(request.POST, request.FILES)
+        profile_form=UserProfileInfoForm(request.POST,request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user=user_form.save()
             user.set_password(user.password)
@@ -20,7 +22,7 @@ def register(request):
             profile.user=user
             if 'profile_pic' in request.FILES:
                 print('fount it')
-                profile.profile_pic=request.FILES['media/']
+                profile.profile_pic=request.FILES['profile_pic']
             profile.save()
             registered=True
             return redirect('/')
@@ -38,6 +40,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
+                request.session['username']=username
                 return HttpResponseRedirect(reverse('theme:index'))
             else:
                 return HttpResponse("Your account was inactive.")
@@ -51,6 +54,11 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('theme:index'))
+@login_required
+def user_detail(request):
+    # detail=get_object_or_404(UserProfileInfo,id=user.pk)
+    args= {"user":request.user}
+    return render(request,'register/detail.html',args)
 
 
 

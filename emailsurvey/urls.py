@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include('theme.urls', namespace='theme')),
     path('surveyform/', include('survey.urls', namespace='survey')),
     path('api/',include('article.urls')),
-    path('register/',include('register.urls')),
+    path('register/',include('register.urls', namespace='register')),
     url('logout/',views.user_logout,name='logout'),
 ]
 

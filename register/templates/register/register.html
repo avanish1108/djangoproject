@@ -1,39 +1,38 @@
 {% extends "base.html" %}
-{% load staticfiles %}
-{%block content%}
+{% block content %}
 <div class="col-md-4 offset-md-4">
     <form method = "POST" enctype="multipart/form-data">
       {% csrf_token %}
-      <!-- <div class="md-form">
-          <input type="text" id="username" name="username" class="form-control">
+      <div class="md-form">
+          <input type="text" id="username" name="username" required class="form-control">
           <label for="username">User name</label>
         </div>
         <div class="md-form">
-            <input type="text" id="email" name="email" class="form-control">
+            <input type="text" id="email" name="email" required class="form-control">
             <label for="email">Email Id</label>
           </div>
           <div class="md-form">
-            <input type="password" id="password" name="password" class="form-control">
+            <input type="password" id="password" name="password" required class="form-control">
             <label for="password">Password</label>
           </div>
           <div class="md-form">
-            <input type="text" id="mobile_number" name="mobile_number" class="form-control">
-            <label for="mobile_number">Mobile mobile_number</label>
+            <input type="text" id="mobile_number" name="mobile_number" required class="form-control">
+            <label for="mobile_number">Mobile number</label>
           </div>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroupFileAddon01">Upload Image</span>
             </div>
             <div class="custom-file">
-              <input type="file" name="profile_pic" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <input type="file" name="profile_pic" class="custom-file-input" id="inputGroupFile01" accept="image/*" required aria-describedby="inputGroupFileAddon01">
               <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
             </div>
-          </div>  -->
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
+          </div>
+          <!-- {{ user_form.as_p }}
+          {{ profile_form.as_p }} -->
       <div class="form-actions">
-  <input type="submit" value="send" class="btn btn-outline-default">
+  <input type="submit" value="register" class="btn btn-outline-default">
   </div>
     </form>
     </div>
-{%endblock%}
+{% endblock %}
